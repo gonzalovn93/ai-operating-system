@@ -1,0 +1,88 @@
+---
+title: PM Toolkit — System Architecture
+---
+
+graph TB
+    subgraph Input["User Input"]
+        NL["Natural Language Command"]
+        CLI["CLI Command (python main.py)"]
+        SCHED["Scheduled Trigger (cron)"]
+    end
+
+    subgraph Routing["Chat Routing Layer"]
+        SKILL["SKILL.md Router"]
+        MEM["MEMORY.md (Global Context)"]
+    end
+
+    subgraph Skills["Skill Domains"]
+        LP["LearningProductivity<br/>6 workflows"]
+        CV["ContentVoice<br/>8 modules"]
+        COS["CareerOS<br/>4 workflows"]
+        PMT["PMToolkit<br/>38 workflows"]
+        JSA["Job Search Agent<br/>5 components"]
+    end
+
+    subgraph Agents["High-Context Agents"]
+        CS["Career Strategy"]
+        RS["Recruiting Strategist"]
+        PB["Personal Branding"]
+        PS["Positioning Strategist"]
+        PC["PM Copilot"]
+    end
+
+    subgraph AI["AI Layer"]
+        CLAUDE["Claude API"]
+        GEMINI["Gemini (Images)"]
+    end
+
+    subgraph Data["Data & Output Layer"]
+        NOTION["Notion (9 databases)"]
+        GDRIVE["Google Drive"]
+        GCAL["Google Calendar"]
+        GSHEETS["Google Sheets"]
+        LOCAL["Local Files (PDF, MD)"]
+    end
+
+    subgraph Memory["Persistent Memory"]
+        LEARN["LEARNINGS.md<br/>(per skill)"]
+        ELOG["execution_log.json"]
+        GLOB["GLOBAL_LEARNINGS.md"]
+    end
+
+    NL --> SKILL
+    CLI --> Skills
+    SCHED --> LP
+    SCHED --> CV
+    SCHED --> JSA
+
+    SKILL --> Skills
+    MEM --> SKILL
+
+    LP --> CLAUDE
+    CV --> CLAUDE
+    CV --> GEMINI
+    COS --> CLAUDE
+    PMT --> CLAUDE
+    JSA --> CLAUDE
+
+    Agents --> CLAUDE
+
+    CLAUDE --> NOTION
+    CLAUDE --> GDRIVE
+    CLAUDE --> LOCAL
+    LP --> GCAL
+    JSA --> GSHEETS
+    PMT --> GDRIVE
+
+    Skills --> LEARN
+    LEARN --> Skills
+    ELOG --> Memory
+    GLOB --> Routing
+
+    style Input fill:#f9f9f9,stroke:#333
+    style Routing fill:#e8f4f8,stroke:#333
+    style Skills fill:#fff3e0,stroke:#333
+    style Agents fill:#fce4ec,stroke:#333
+    style AI fill:#e8eaf6,stroke:#333
+    style Data fill:#e8f5e9,stroke:#333
+    style Memory fill:#f3e5f5,stroke:#333

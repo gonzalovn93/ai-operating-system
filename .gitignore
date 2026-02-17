@@ -1,0 +1,28 @@
+# Environment
+.env
+*.pickle
+credentials.json
+oauth_credentials.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Outputs (generated files — don't commit)
+outputs/
+output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+execution_log.json
+
+# IDE
+.vscode/
+.idea/
