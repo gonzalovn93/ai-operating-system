@@ -1,8 +1,18 @@
-# PM Toolkit — An AI-Native Operating System for Product Management
+# AI Operating System
 
-A modular system of Claude Code skills, Python workflows, and Notion integrations I designed to run my career, recruiting, content creation, and product work as a single operating system.
+An AI-native operating system for product management, career, content, and productivity — built on Claude Code.
 
-**43+ workflows · 5 skill domains · 9 Notion databases · 3 scheduled automations**
+## Domains
+
+| Domain | What it covers | Workflows |
+|--------|---------------|-----------|
+| [**career**](./career) | Job scanning, networking, applications, weekly strategy | 4 |
+| [**content**](./content) | Ideation, drafting, carousels, metrics retros | 3 |
+| [**product**](./product) | PRD drafts, OKRs, case studies | 3 |
+| [**productivity**](./productivity) | Daily digests, task automation | 1 |
+| [**agents**](./agents) | High-context copilots for strategy, positioning, branding | 5 |
+
+**43+ workflows · 9 Notion databases · 5 domains**
 
 ---
 
@@ -17,7 +27,7 @@ As a Product Manager recruiting for senior roles at top-tier tech companies, I n
 - Automate the repetitive parts of job searching, networking, and content creation
 - Scale my decision-making without losing quality
 
-This toolkit is that system. It's built on [Claude Code](https://docs.anthropic.com/en/docs/claude-code), runs on Python, writes to Notion, and operates through natural language commands.
+This is that system. It's built on [Claude Code](https://docs.anthropic.com/en/docs/claude-code), runs on Python, writes to Notion, and operates through natural language commands.
 
 It's not a collection of prompts. It's an operating system.
 
@@ -25,7 +35,7 @@ It's not a collection of prompts. It's an operating system.
 
 ## Architecture
 
-The system is organized into **5 skill domains**, each with its own workflows, databases, and instruction files. A chat routing layer connects them so I can operate everything from a single Claude Code session.
+The system is organized into **5 domains**, each with its own workflows, databases, and instruction files. A chat routing layer connects them so I can operate everything from a single Claude Code session.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -51,21 +61,11 @@ The system is organized into **5 skill domains**, each with its own workflows, d
 └─────────────────────────────────────────────────────────────┘
 ```
 
-→ [Full architecture breakdown](./ARCHITECTURE.md)
+> [Full architecture breakdown](./ARCHITECTURE.md)
 
 ---
 
 ## What's Inside
-
-### Skill Domains
-
-| Domain | Purpose | Workflows | Key Tech |
-|--------|---------|-----------|----------|
-| [**LearningProductivity**](./workflows/daily-digest/) | OKR tracking, weekly reviews, habit tracking, automated daily information digest | 6 | Notion API, Google Calendar, RSS/Twitter/YouTube fetchers |
-| [**ContentVoice**](./workflows/content-package-generator/) | End-to-end LinkedIn content pipeline — ideation to carousel generation to metrics | 8 modules | Claude API, Gemini (images), Notion, LinkedIn CSV import |
-| [**CareerOS**](./workflows/job-hunter/) | Automated job discovery, alumni-scored networking, tailored resume generation, pipeline analysis | 4 | httpx, reportlab (PDF), Notion API |
-| [**PMToolkit**](./agents/pm-copilot/) | 38 PM workflows — PRDs, sizing, competitive analysis, case prep, and more | 38 | Claude API, Google Drive OAuth |
-| [**Job Search Agent**](./workflows/) | Portable, configurable job search — swap the profile, run for anyone | 5 components | Scoring engine, Google Sheets API |
 
 ### Agents (Claude Projects)
 
@@ -79,30 +79,82 @@ High-context agents for tasks requiring memory, judgment, and iteration:
 | [Positioning Strategist](./agents/positioning-strategist/) | Interview narratives, company-specific story tailoring |
 | [PM Copilot](./agents/pm-copilot/) | Product thinking partner — PRD review, tradeoff analysis, strategy critique |
 
-### Workflows (Automated Pipelines)
-
-Scheduled or on-demand Python workflows:
+### Career Workflows
 
 | Workflow | Trigger | What It Produces |
 |----------|---------|-----------------|
-| [JobHunter](./workflows/job-hunter/) | `python main.py hunt` | PM roles from target companies → Notion |
-| [NetworkingScout](./workflows/networking-scout/) | `python main.py scout` | Scored networking contacts → Notion |
-| [ApplicationBlitz](./workflows/application-blitz/) | `python main.py blitz` | Tailored resume PDF + cover letter |
-| [WeeklyMemo](./workflows/weekly-memo/) | `python main.py memo` | Strategic pipeline report |
-| [DailyDigest](./workflows/daily-digest/) | Scheduled, daily | AI-summarized news from 80+ sources → Notion journal |
-| [ContentPackageGenerator](./workflows/content-package-generator/) | On-demand | LinkedIn post + 7-slide carousel + video script |
-| [WeeklyIdeation](./workflows/weekly-ideation/) | On-demand | 12–20 content ideas from curated sources |
-| [ContentRetro](./workflows/content-retro/) | Weekly | Performance analysis of published content |
+| [JobHunter](./career/job-hunter/) | `python main.py hunt` | PM roles from target companies → Notion |
+| [NetworkingScout](./career/networking-scout/) | `python main.py scout` | Scored networking contacts → Notion |
+| [ApplicationBlitz](./career/application-blitz/) | `python main.py blitz` | Tailored resume PDF + cover letter |
+| [WeeklyMemo](./career/weekly-memo/) | `python main.py memo` | Strategic pipeline report |
 
-### Templates
+### Content Workflows
 
-Reusable, copy-paste-ready frameworks:
+| Workflow | Trigger | What It Produces |
+|----------|---------|-----------------|
+| [ContentPackageGenerator](./content/content-package-generator/) | On-demand | LinkedIn post + 7-slide carousel + video script |
+| [WeeklyIdeation](./content/weekly-ideation/) | On-demand | 12–20 content ideas from curated sources |
+| [ContentRetro](./content/content-retro/) | Weekly | Performance analysis of published content |
+
+### Productivity Workflows
+
+| Workflow | Trigger | What It Produces |
+|----------|---------|-----------------|
+| [DailyDigest](./productivity/daily-digest/) | Scheduled, daily | AI-summarized news from 80+ sources → Notion journal |
+
+### Product Templates
 
 | Template | Use Case |
 |----------|----------|
-| [PRD Template](./templates/prd-template.md) | Product Requirements Document |
-| [OKR Template](./templates/okr-template.md) | Quarterly Objectives & Key Results |
-| [Case Study Template](./templates/case-study-template.md) | Portfolio-ready project write-up |
+| [PRD Template](./product/prd-template/) | Product Requirements Document |
+| [OKR Template](./product/okr-template/) | Quarterly Objectives & Key Results |
+| [Case Study Template](./product/case-study-template/) | Portfolio-ready project write-up |
+
+---
+
+## Folder Structure
+
+```
+ai-operating-system/
+├── README.md
+├── ARCHITECTURE.md
+├── LICENSE
+├── .env.example
+├── .gitignore
+│
+├── career/
+│   ├── README.md
+│   ├── job-hunter/
+│   ├── networking-scout/
+│   ├── application-blitz/
+│   └── weekly-memo/
+│
+├── content/
+│   ├── README.md
+│   ├── content-package-generator/
+│   ├── weekly-ideation/
+│   └── content-retro/
+│
+├── product/
+│   ├── README.md
+│   ├── prd-template/
+│   ├── okr-template/
+│   └── case-study-template/
+│
+├── productivity/
+│   ├── README.md
+│   └── daily-digest/
+│
+├── agents/
+│   ├── career-strategy/
+│   ├── recruiting-strategist/
+│   ├── personal-branding/
+│   ├── positioning-strategist/
+│   └── pm-copilot/
+│
+└── images/
+    └── architecture.mermaid
+```
 
 ---
 
@@ -169,7 +221,7 @@ Real patterns discovered through building and operating the system:
 
 ```bash
 # Clone the repo
-git clone https://github.com/gonzalovn93/pm-toolkit.git
+git clone https://github.com/gonzalovn93/ai-operating-system.git
 
 # Install dependencies
 pip install -r requirements.txt
@@ -189,11 +241,11 @@ cp .env.example .env
 
 ## About
 
-I'm **Gonzalo Vásquez** — Product Manager, founder, and builder. 6+ years of PM experience across consumer tech, ads, and fintech (Rappi, Intuit). Currently finishing my MBA at Berkeley Haas and building [GOPLAI](https://goplai.com), an AI-powered sports-tech platform.
+I'm **Gonzalo Vasquez** — Product Manager, founder, and builder. 6+ years of PM experience across consumer tech, ads, and fintech (Rappi, Intuit). Currently finishing my MBA at Berkeley Haas and building [GOPLAI](https://goplai.com), an AI-powered sports-tech platform.
 
-This toolkit is how I operate.
+This system is how I operate.
 
-→ [Website](https://gonzalovasquez.com) · [LinkedIn](https://linkedin.com/in/gonzalovasquezd)
+> [Website](https://gonzalovasquez.com) · [LinkedIn](https://linkedin.com/in/gonzalovasquezd)
 
 ---
 

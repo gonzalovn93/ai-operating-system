@@ -2,7 +2,7 @@
 
 ## Overview
 
-The PM Toolkit is structured as a 4-layer system, inspired by how product organizations separate strategy from execution. Each layer serves a different type of task, and choosing the right layer for a given problem is itself a design decision.
+The AI Operating System is structured as a 4-layer system, inspired by how product organizations separate strategy from execution. Each layer serves a different type of task, and choosing the right layer for a given problem is itself a design decision.
 
 ## The 4-Layer Model
 
