@@ -9,10 +9,10 @@ An AI-native operating system for product management, career, content, and produ
 | [**career**](./career) | Job scanning, networking, applications, weekly strategy | 4 |
 | [**content**](./content) | Ideation, drafting, carousels, metrics retros | 3 |
 | [**product**](./product) | PRD drafts, OKRs, case studies | 3 |
-| [**productivity**](./productivity) | Daily digests, task automation | 1 |
+| [**productivity**](./productivity) | Daily digests, learning capture, OKR planning, weekly reviews, habit tracking, task automation | 6 |
 | [**agents**](./agents) | High-context copilots for strategy, positioning, branding | 5 |
 
-**43+ workflows · 9 Notion databases · 5 domains**
+**48+ workflows · 9 Notion databases · 5 domains**
 
 ---
 
@@ -47,10 +47,12 @@ The system is organized into **5 domains**, each with its own workflows, databas
 │          │          │          │          │   (Portable)    │
 ├──────────┼──────────┼──────────┼──────────┼─────────────────┤
 │ 6 flows  │ 8 modules│ 4 flows  │38 flows  │  5 components   │
-│ OKRs     │ Ideation │ Hunt     │ PRDs     │  Scoring        │
-│ Reviews  │ Posts    │ Scout    │ OKRs     │  Discovery      │
-│ Habits   │ Carousels│ Blitz    │ Analysis │  Outreach       │
-│ Digest   │ Metrics  │ Memo     │ Cases    │  Tracking       │
+│ Digest   │ Ideation │ Hunt     │ PRDs     │  Scoring        │
+│ Learning │ Posts    │ Scout    │ OKRs     │  Discovery      │
+│ Reviews  │ Carousels│ Blitz    │ Analysis │  Outreach       │
+│ OKRs     │ Metrics  │ Memo     │ Cases    │  Tracking       │
+│ Tasks    │          │          │          │                 │
+│ Habits   │          │          │          │                 │
 ├──────────┴──────────┴──────────┴──────────┴─────────────────┤
 │                     Notion Databases (9)                     │
 │    Tasks · Learnings · Journal · Content · Applications     │
@@ -100,7 +102,12 @@ High-context agents for tasks requiring memory, judgment, and iteration:
 
 | Workflow | Trigger | What It Produces |
 |----------|---------|-----------------|
-| [DailyDigest](./productivity/daily-digest/) | Scheduled, daily | AI-summarized news from 80+ sources → Notion journal |
+| [DailyDigest](./productivity/daily-digest/) | Scheduled, daily 8am | AI-summarized news from 85+ sources → Notion journal |
+| [LearningCapture](./productivity/learning-capture/) | "I learned X from Y" | Structured insights with metadata → Notion Aprendizajes |
+| [WeeklyReview](./productivity/weekly-review/) | "Do my weekly review" | OKR progress, calendar reality check, blocker analysis → Notion journal |
+| [QuarterlyOKRDesign](./productivity/quarterly-okr-design/) | "Plan my Q2 OKRs" | Identity-aligned OKRs with capacity validation → Notion |
+| [TaskManagement](./productivity/task-management/) | "Schedule my week" | Energy-based time blocks → Google Calendar |
+| [HabitTracking](./productivity/habit-tracking/) | "Update my initiatives" | Calendar sync + manual logging → Notion initiative progress |
 
 ### Product Templates
 
@@ -143,7 +150,12 @@ ai-operating-system/
 │
 ├── productivity/
 │   ├── README.md
-│   └── daily-digest/
+│   ├── daily-digest/
+│   ├── learning-capture/
+│   ├── weekly-review/
+│   ├── quarterly-okr-design/
+│   ├── task-management/
+│   └── habit-tracking/
 │
 ├── agents/
 │   ├── career-strategy/
@@ -162,12 +174,14 @@ ai-operating-system/
 
 A typical week looks like:
 
-- **Monday morning:** DailyDigest has already run — I scan the Notion journal page over coffee to see what's relevant in AI, product, and tech
+- **Every morning:** DailyDigest has already run at 8am — I scan the Notion journal page over coffee to see what's relevant across AI, product, startups, and tech
+- **Monday:** `"Do my weekly review"` → WeeklyReview pulls OKR progress from Notion, checks actual hours from Google Calendar, identifies blockers by severity, and generates a full analysis
 - **Monday:** `"Find PM jobs"` → JobHunter scrapes target companies, scores roles, and populates my Applications database
-- **Tuesday:** `"Find people at Notion"` → NetworkingScout identifies contacts, scores them by relevance and alumni overlap, generates outreach context
-- **Wednesday:** `"Generate materials for this role"` → ApplicationBlitz analyzes the JD and produces a tailored resume + cover letter
+- **Tuesday:** `"I learned X from the Lenny podcast"` → LearningCapture extracts insights, categorizes them, and stores them in the Aprendizajes database with application notes
+- **Wednesday:** `"Schedule my week"` → TaskManagement creates energy-optimized time blocks in Google Calendar — deep work at 9am, gym at 6pm, no meetings before 11
 - **Thursday:** `"Write a PRD for X"` → PMToolkit generates a structured PRD from my input and pushes it to Google Drive
-- **Friday:** `"Do my weekly review"` → WeeklyReview pulls OKR progress, completed tasks, and learnings into a structured reflection
+- **End of quarter:** `"Plan my Q2 OKRs"` → QuarterlyOKRDesign reviews last quarter, validates identity alignment, designs OKRs with capacity math, and pushes to Notion
+- **Ongoing:** `"Update my initiatives"` → HabitTracking syncs Google Calendar events to Notion initiative progress, showing before/after deltas
 - **Ongoing:** ContentVoice generates post ideas, drafts, carousels, and tracks what performs — all feeding back into the next cycle
 
 I don't open 5 different tools. I open Claude Code and speak in commands.
