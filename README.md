@@ -4,15 +4,15 @@ An AI-native operating system for product management, career, content, and produ
 
 ## Domains
 
-| Domain | What it covers | Workflows |
-|--------|---------------|-----------|
-| [**career**](./career) | Job scanning, networking, applications, weekly strategy | 4 |
-| [**content**](./content) | Ideation, drafting, carousels, metrics retros | 3 |
-| [**product**](./product) | PRD drafts, OKRs, case studies | 3 |
+| Domain | What it covers | Active Workflows |
+|--------|---------------|-----------------|
+| [**career**](./career) | Job scanning, networking, applications | 3 |
+| [**content**](./content) | Voice-driven post + carousel generation | 1 |
+| [**product**](./product) | PRD drafts, OKRs, case studies (38 via PM Toolkit) | 38 |
 | [**productivity**](./productivity) | Daily digests, learning capture, OKR planning, weekly reviews, habit tracking, task automation | 6 |
-| [**agents**](./agents) | High-context copilots for strategy, positioning, branding | 5 |
+| [**agents**](./agents) | High-context copilots for strategy, positioning, branding + production agents | 6 |
 
-**48+ workflows · 9 Notion databases · 5 domains**
+**48+ workflows · 9 Notion databases · 5 domains · 3 daily-use automations**
 
 ---
 
@@ -83,31 +83,28 @@ High-context agents for tasks requiring memory, judgment, and iteration:
 
 ### Career Workflows
 
-| Workflow | Trigger | What It Produces |
-|----------|---------|-----------------|
-| [JobHunter](./career/job-hunter/) | `python main.py hunt` | PM roles from target companies → Notion |
-| [NetworkingScout](./career/networking-scout/) | `python main.py scout` | Scored networking contacts → Notion |
-| [ApplicationBlitz](./career/application-blitz/) | `python main.py blitz` | Tailored resume PDF + cover letter |
-| [WeeklyMemo](./career/weekly-memo/) | `python main.py memo` | Strategic pipeline report |
+| Workflow | Trigger | What It Produces | Status |
+|----------|---------|-----------------|--------|
+| [JobHunter](./career/job-hunter/) | `python main.py hunt` | PM roles from 18 target companies → Notion | **Active** (weekly) |
+| [NetworkingScout](./career/networking-scout/) | `python main.py scout` | Scored networking contacts → Notion | Available |
+| [ApplicationBlitz](./career/application-blitz/) | `python main.py blitz` | Tailored resume PDF + cover letter | Available |
 
 ### Content Workflows
 
-| Workflow | Trigger | What It Produces |
-|----------|---------|-----------------|
-| [ContentPackageGenerator](./content/content-package-generator/) | On-demand | LinkedIn post + 7-slide carousel + video script |
-| [WeeklyIdeation](./content/weekly-ideation/) | On-demand | 12–20 content ideas from curated sources |
-| [ContentRetro](./content/content-retro/) | Weekly | Performance analysis of published content |
+| Workflow | Trigger | What It Produces | Status |
+|----------|---------|-----------------|--------|
+| [ContentPackageGenerator](./content/content-package-generator/) | On-demand | LinkedIn post + 7-slide carousel + video script | **Active** |
 
 ### Productivity Workflows
 
-| Workflow | Trigger | What It Produces |
-|----------|---------|-----------------|
-| [DailyDigest](./productivity/daily-digest/) | Scheduled, daily 8am | AI-summarized news from 85+ sources → Notion journal |
-| [LearningCapture](./productivity/learning-capture/) | "I learned X from Y" | Structured insights with metadata → Notion Aprendizajes |
-| [WeeklyReview](./productivity/weekly-review/) | "Do my weekly review" | OKR progress, calendar reality check, blocker analysis → Notion journal |
-| [QuarterlyOKRDesign](./productivity/quarterly-okr-design/) | "Plan my Q2 OKRs" | Identity-aligned OKRs with capacity validation → Notion |
-| [TaskManagement](./productivity/task-management/) | "Schedule my week" | Energy-based time blocks → Google Calendar |
-| [HabitTracking](./productivity/habit-tracking/) | "Update my initiatives" | Calendar sync + manual logging → Notion initiative progress |
+| Workflow | Trigger | What It Produces | Status |
+|----------|---------|-----------------|--------|
+| [DailyDigest](./productivity/daily-digest/) | Daily | AI-summarized news from 85+ sources → Notion journal | **Active** (daily) |
+| [LearningCapture](./productivity/learning-capture/) | "I learned X from Y" | Structured insights with metadata → Notion Aprendizajes | Available |
+| [WeeklyReview](./productivity/weekly-review/) | "Do my weekly review" | OKR progress, calendar reality check, blocker analysis → Notion journal | Available |
+| [QuarterlyOKRDesign](./productivity/quarterly-okr-design/) | "Plan my Q2 OKRs" | Identity-aligned OKRs with capacity validation → Notion | Available |
+| [TaskManagement](./productivity/task-management/) | "Schedule my week" | Energy-based time blocks → Google Calendar | Available |
+| [HabitTracking](./productivity/habit-tracking/) | "Update my initiatives" | Calendar sync + manual logging → Notion initiative progress | Available |
 
 ### Product Templates
 
@@ -131,16 +128,13 @@ ai-operating-system/
 │
 ├── career/
 │   ├── README.md
-│   ├── job-hunter/
-│   ├── networking-scout/
-│   ├── application-blitz/
-│   └── weekly-memo/
+│   ├── job-hunter/            # Active — weekly scans of 18 companies
+│   ├── networking-scout/      # Available
+│   └── application-blitz/     # Available
 │
 ├── content/
 │   ├── README.md
-│   ├── content-package-generator/
-│   ├── weekly-ideation/
-│   └── content-retro/
+│   └── content-package-generator/  # Active — post + carousel + video script
 │
 ├── product/
 │   ├── README.md
@@ -162,7 +156,8 @@ ai-operating-system/
 │   ├── recruiting-strategist/
 │   ├── personal-branding/
 │   ├── positioning-strategist/
-│   └── pm-copilot/
+│   ├── pm-copilot/
+│   └── perplexity-intel-agent/  # Production — weekly competitor intelligence
 │
 └── images/
     └── architecture.mermaid
@@ -172,17 +167,17 @@ ai-operating-system/
 
 ## How I Actually Use This
 
-A typical week looks like:
+The three automations I run consistently:
 
-- **Every morning:** DailyDigest has already run at 8am — I scan the Notion journal page over coffee to see what's relevant across AI, product, startups, and tech
-- **Monday:** `"Do my weekly review"` → WeeklyReview pulls OKR progress from Notion, checks actual hours from Google Calendar, identifies blockers by severity, and generates a full analysis
-- **Monday:** `"Find PM jobs"` → JobHunter scrapes target companies, scores roles, and populates my Applications database
-- **Tuesday:** `"I learned X from the Lenny podcast"` → LearningCapture extracts insights, categorizes them, and stores them in the Aprendizajes database with application notes
-- **Wednesday:** `"Schedule my week"` → TaskManagement creates energy-optimized time blocks in Google Calendar — deep work at 9am, gym at 6pm, no meetings before 11
-- **Thursday:** `"Write a PRD for X"` → PMToolkit generates a structured PRD from my input and pushes it to Google Drive
-- **End of quarter:** `"Plan my Q2 OKRs"` → QuarterlyOKRDesign reviews last quarter, validates identity alignment, designs OKRs with capacity math, and pushes to Notion
-- **Ongoing:** `"Update my initiatives"` → HabitTracking syncs Google Calendar events to Notion initiative progress, showing before/after deltas
-- **Ongoing:** ContentVoice generates post ideas, drafts, carousels, and tracks what performs — all feeding back into the next cycle
+- **Every morning:** DailyDigest aggregates 85+ sources (Twitter, RSS, YouTube, Hacker News, Gmail newsletters), scores and clusters them by relevance, generates AI summaries, and appends a curated digest to my Notion journal. I scan it over coffee instead of scrolling feeds.
+- **Every week:** `"Find PM jobs"` → JobHunter scrapes 18 target companies across 6 ATS platforms, deduplicates against existing entries, scores for fit, and populates my Applications database in Notion.
+- **On demand:** `"Create the post for [title]"` → ContentPackageGenerator takes a content idea from my Notion backlog and produces a LinkedIn post, 7-slide editorial carousel with composited images, and a 45-second video script — all in my voice, for ~$0.87 per package.
+
+The rest of the system activates when needed:
+
+- **Career push:** `"Find people at Anthropic"` → NetworkingScout scores contacts by Berkeley affinity. `"Generate materials for [job]"` → ApplicationBlitz creates a tailored resume + cover letter via Claude.
+- **Product work:** `"Write a PRD for X"` → PMToolkit generates any of 38 PM documents (PRDs, OKRs, competitive analysis, board decks) and saves to Google Drive.
+- **Reflection:** `"Do my weekly review"` → WeeklyReview pulls OKR progress, checks calendar hours, identifies blockers.
 
 I don't open 5 different tools. I open Claude Code and speak in commands.
 
