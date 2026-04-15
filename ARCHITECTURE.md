@@ -227,4 +227,20 @@ Notion's API is flexible enough to serve as a lightweight database for structure
 
 ### Why separate skills instead of one mega-prompt?
 
-Context window management. A single prompt with all 43+ workflows would be massive, slow, and fragile. Separate skills with their own SKILL.md routers mean Claude Code only loads the context relevant to the current task. This is the same principle behind microservices: bounded contexts, clear interfaces, independent scaling.
+Context window management. A single prompt with all 48+ workflows would be massive, slow, and fragile. Separate skills with their own SKILL.md routers mean Claude Code only loads the context relevant to the current task. This is the same principle behind microservices: bounded contexts, clear interfaces, independent scaling.
+
+---
+
+## Key Implementation Patterns
+
+### Calendar as accountability layer
+
+Google Calendar events are color-coded by category (11 colors → 10 categories like GoPlai, Career, Health, Academic). The WeeklyReview workflow pulls actual hours from the calendar, compares against OKR initiative targets, auto-updates Notion with the delta, and flags deficits. The calendar isn't just scheduling — it's the source of truth for time allocation.
+
+### Notion relation filters
+
+Notion's `Trimestre` (quarter) property is a relation, not a select. Filtering requires `relation: {contains: page_id}` with a hardcoded quarter-to-page-ID mapping. The `Pilar` (pillar) property is a nested rollup that resolves through a `Rutas` relation. These aren't documented in Notion's API docs — they were discovered through debugging.
+
+### Self-improving execution loop
+
+Every skill reads `LEARNINGS.md` before execution and writes to it after. This captures API quirks, prompt improvements, edge cases, and performance benchmarks. The system accumulates operational knowledge that prevents repeated mistakes and surfaces optimization opportunities.
