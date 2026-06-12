@@ -9,6 +9,7 @@ End-to-end AI content pipeline — from ideation to published carousel to perfor
 | [**ContentPackageGenerator**](./content-package-generator/) | `"Create the post for [title]"` | LinkedIn post + 7-slide carousel + video script | ✅ Active |
 | [**WeeklyIdeation**](./weekly-ideation/) | Weekly | Content ideas from 80+ sources aligned with voice strategy | ✅ Active |
 | [**ContentRetro**](./content-retro/) | Weekly | Post performance analysis, pattern insights, improvement recs | ✅ Active |
+| [**ContentEditor**](./content-editor/) | `"Review my video script"` | Script/edit review, 12-point quality gate, clip inventory | ✅ Active |
 
 ## Example
 

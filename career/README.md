@@ -9,7 +9,7 @@ AI-powered workflows to systematize job search, networking, and applications —
 | [**JobHunter**](./job-hunter/) | `"Find PM jobs"` | PM roles from 18 target companies, scored and deduped → Notion | ✅ Active (weekly) |
 | [**NetworkingScout**](./networking-scout/) | `"Find people at [company]"` | Scored contacts with outreach suggestions → Notion | ✅ Active |
 | [**ApplicationBlitz**](./application-blitz/) | `"Generate materials for [job]"` | Tailored resume PDF + cover letter | ✅ Active |
-| [**WeeklyMemo**](./weekly-memo/) | `"Career pipeline update"` | Pipeline status, blockers, strategy brief | ✅ Active |
+| [**RelationshipNurture**](./relationship-nurture/) | `"Who do I need to follow up with?"` | Cadence-based nurture report + follow-up drafts → Notion | ✅ Active |
 
 ## Example
 
@@ -27,9 +27,9 @@ AI-powered workflows to systematize job search, networking, and applications —
 
 ## How it works
 
-JobHunter scrapes 18 target companies across 6 ATS platforms, filters for PM roles matching expertise and US location, deduplicates against Notion, scores each role, and writes results with full job descriptions. NetworkingScout finds contacts at those companies and scores by Berkeley alumni affinity. ApplicationBlitz takes a job description and generates a tailored resume (PDF via reportlab) and cover letter using Claude.
+JobHunter scrapes 18 target companies across 6 ATS platforms, filters for PM roles matching expertise and US location, deduplicates against Notion, scores each role, and writes results with full job descriptions. NetworkingScout finds contacts at those companies and scores by Berkeley alumni affinity. ApplicationBlitz takes a job description and generates a tailored resume (PDF via reportlab) and cover letter using Claude. RelationshipNurture keeps the warm connections warm — a cadence engine that surfaces who's overdue and drafts context-aware follow-ups.
 
-The three workflows form a pipeline: discover roles → find warm connections → generate application materials.
+The workflows form a pipeline: discover roles → find warm connections → nurture them over time → generate application materials.
 
 ## Stack
 

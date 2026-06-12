@@ -12,6 +12,8 @@ Automated daily workflows for information intake, goal tracking, learning captur
 | [**QuarterlyOKRDesign**](./quarterly-okr-design/) | `"Plan my Q2 OKRs"` | Identity-aligned OKRs with capacity validation → Notion | ✅ Active |
 | [**TaskManagement**](./task-management/) | `"Schedule my week"` | Energy-based time blocks → Google Calendar | ✅ Active |
 | [**HabitTracking**](./habit-tracking/) | `"Update my initiatives"` | Calendar sync + manual logging → Notion | ✅ Active |
+| [**GranolaSync**](./granola-sync/) | `"Sync my Granola notes"` | AI-enhanced meeting notes → routed Notion pages | ✅ Active |
+| [**TimeTracking**](./time-tracking/) | `"Time dashboard"` / weekly | Hours-by-category from Calendar → Notion journal | ✅ Active |
 
 ## Example
 
@@ -49,8 +51,8 @@ TaskManagement                  HabitTracking
   Calendar time blocks    ->    Initiative progress sync
 ```
 
-The six workflows form a closed loop: DailyDigest feeds learning, LearningCapture structures it, QuarterlyOKRDesign sets goals, TaskManagement schedules execution, HabitTracking tracks progress, and WeeklyReview identifies gaps.
+The core workflows form a closed loop: DailyDigest feeds learning, LearningCapture structures it, QuarterlyOKRDesign sets goals, TaskManagement schedules execution, HabitTracking tracks progress, and WeeklyReview identifies gaps. Two more feed the loop: **GranolaSync** captures meeting notes into Notion automatically, and **TimeTracking** measures where the week's hours actually went — the data WeeklyReview holds against targets.
 
 ## Stack
 
-Python · Claude API · Notion API · Google Calendar API · Twitter API v2 · YouTube Data API · Gmail OAuth · feedparser · Windows Task Scheduler
+Python · Claude API · Notion API · Google Calendar API · Granola API · Twitter API v2 · YouTube Data API · Gmail OAuth · feedparser · Windows Task Scheduler

@@ -12,11 +12,11 @@ An operating system layer that turns natural language into structured workflows 
 │ Learning │ Content  │ Career   │    PM    │     Agents      │
 │Productiv.│  Voice   │   OS     │ Toolkit  │  (High-Context) │
 ├──────────┼──────────┼──────────┼──────────┼─────────────────┤
-│ 6 flows  │ 3 modules│ 4 flows  │38 flows  │  6 copilots     │
+│ 8 flows  │ 4 modules│ 4 flows  │38 flows  │  6 copilots     │
 │ Digest   │ Ideation │ Hunt     │ PRDs     │  Career         │
 │ Learning │ Posts    │ Scout    │ OKRs     │  Recruiting     │
 │ Reviews  │ Retro   │ Blitz    │ Analysis │  Branding       │
-│ OKRs     │          │ Memo     │ Cases    │  Positioning    │
+│ Granola  │ Editor   │ Nurture  │ Cases    │  Positioning    │
 │ Tasks    │          │          │          │  PM Copilot     │
 │ Habits   │          │          │          │  Intel Agent    │
 ├──────────┴──────────┴──────────┴──────────┴─────────────────┤
@@ -29,7 +29,7 @@ An operating system layer that turns natural language into structured workflows 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**48+ workflows · 9 Notion databases · 5 domains · 6 agents · 3 daily-use automations**
+**52+ workflows · 9 Notion databases · 5 domains · 6 agents · 3 daily-use automations**
 
 ---
 
@@ -55,10 +55,10 @@ Five domains, each with its own workflows, databases, and instruction files. A c
 
 | Domain | What it covers | Key workflows | Count |
 |--------|---------------|---------------|-------|
-| [**Career**](./career) | Job scanning, networking, applications, pipeline strategy | JobHunter, NetworkingScout, ApplicationBlitz | 4 |
-| [**Content**](./content) | Voice-driven posts, carousels, ideation, performance retro | ContentPackageGenerator, WeeklyIdeation | 3 |
+| [**Career**](./career) | Job scanning, networking, nurture, applications, pipeline strategy | JobHunter, NetworkingScout, ApplicationBlitz, RelationshipNurture | 4 |
+| [**Content**](./content) | Voice-driven posts, carousels, ideation, retro, video editing | ContentPackageGenerator, WeeklyIdeation, ContentEditor | 4 |
 | [**Product**](./product) | PRDs, OKRs, case studies, competitive analysis, board decks | 38 PM workflows via PMToolkit | 38 |
-| [**Productivity**](./productivity) | Daily digests, learning capture, OKR tracking, weekly reviews | DailyDigest, WeeklyReview, HabitTracking | 6 |
+| [**Productivity**](./productivity) | Daily digests, learning capture, meeting-note sync, time tracking | DailyDigest, GranolaSync, TimeTracking, WeeklyReview | 8 |
 | [**Agents**](./agents) | High-context copilots with persistent memory and judgment | Career Strategy, PM Copilot, Intel Agent | 6 |
 
 ### Agents
@@ -89,6 +89,7 @@ The three automations I run consistently:
 The rest activates when needed:
 
 - `"Find people at Anthropic"` — NetworkingScout scores contacts by Berkeley affinity and suggests outreach.
+- `"Who do I need to follow up with?"` — RelationshipNurture surfaces overdue contacts on a per-relationship cadence and drafts context-aware follow-ups.
 - `"Generate materials for [job]"` — ApplicationBlitz creates a tailored resume + cover letter.
 - `"Write a PRD for X"` — PMToolkit generates any of 38 PM documents and saves to Google Drive.
 - `"Do my weekly review"` — WeeklyReview pulls OKR progress from Notion, checks calendar hours against targets, identifies blockers, and publishes the analysis.
