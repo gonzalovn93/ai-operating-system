@@ -126,7 +126,7 @@ Each Estante entry is mapped to the database schema:
 - **Title** — the headline / key takeaway. First-party company content (OpenAI, NVIDIA, Anthropic, Google …) is prefixed `Company - Title` so it's obvious at a glance who's presenting
 - **Type** — Reading · Video · Article (derived from the source platform)
 - **Format** — X thread · Youtube video · Podcast · Article · LinkedIn post …
-- **Domain** — Product · AI · Tech · Startups · Career … (multi-select), **classified by the AI from the item's content**, not inherited from the source — so a broad newsletter (e.g. Morning Brew = "Startups") no longer mis-tags an AI/Tech story
+- **Domain** — Product · AI · Tech · Startups · Sports · Career … (multi-select), **classified by the AI from the item's content**, not inherited from the source — so a broad newsletter (e.g. Morning Brew = "Startups") no longer mis-tags an AI/Tech story
 - **Date** — today (drives the "Date = Today" reading surface)
 - **Link** — direct URL to the content
 - **Author / Speaker** — linked to my Network CRM *only* when the author already exists there; publications and company posts are left unlinked
