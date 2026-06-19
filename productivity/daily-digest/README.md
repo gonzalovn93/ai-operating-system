@@ -158,7 +158,7 @@ Scheduled daily at 8:00 AM via Windows Task Scheduler with `StartWhenAvailable=t
 
 ## Stack
 
-Python 3.11+ · Claude API (summaries) · Notion API (Estante DB + Network relation) · Twitter API v2 · YouTube Data API · Gmail OAuth (fetch + send) · WhatsApp · feedparser · Hacker News Firebase API
+Python 3.11+ · Claude Code CLI on the Max plan (summaries — no metered API credits) · Notion API (Estante DB + Network relation) · Twitter API v2 · YouTube Data API · Gmail OAuth (fetch + send) · WhatsApp · feedparser · Hacker News Firebase API
 
 ---
 
