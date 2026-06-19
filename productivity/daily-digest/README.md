@@ -1,6 +1,6 @@
 # DailyDigest
 
-**An automated information pipeline that reads 85+ sources, scores every item for relevance, and delivers a 15-item curated briefing to my Notion journal — every morning at 8am.**
+**An automated information pipeline that reads 85+ sources, scores every item for relevance, and logs a 15-item curated reading list into my Notion "Estante" (Bookshelf) database — plus an email and a WhatsApp nudge — every morning at 8am.**
 
 ---
 
@@ -20,14 +20,14 @@ I built the system.
 
   Twitter/X (15)  ─→  Twitter API  ─┐
   RSS feeds (55+) ─→  feedparser   ─┤
-  YouTube (12)    ─→  YT Data API  ─┼→  Score (0-100)  →  Diversity  →  AI Summary  →  Notion
-  Hacker News     ─→  HN API      ─┤   per item          Caps          (Claude)       Journal
+  YouTube (12)    ─→  YT Data API  ─┼→  Score (0-100)  →  Diversity  →  AI Summary  →  Estante DB
+  Hacker News     ─→  HN API      ─┤   per item          Caps          (Claude)      + Email + WhatsApp
   Gmail (curated) ─→  Gmail API   ─┘
 
                   100+ items fetched    →    scored    →   15 selected    →   summarized   →   published
 ```
 
-The pipeline runs in **under 3 minutes**. By the time I open Notion with coffee, the briefing is already there.
+The pipeline runs in **under 3 minutes**. By the time I open Notion with coffee, the reading list is already there — and the same digest has landed in my inbox and on WhatsApp.
 
 ## Scoring: How 100+ Items Become 15
 
@@ -113,18 +113,26 @@ DailyDigest/
 │   ├── topic_clusterer.py           # Group related items
 │   └── ai_summarizer.py             # Claude API batch summarization
 └── publishers/
-    └── notion_publisher.py          # Append to daily journal page
+    ├── notion_publisher.py          # One Estante entry per item
+    ├── gmail_sender.py              # Email digest (secondary channel)
+    └── whatsapp_sender.py           # WhatsApp nudge (secondary channel)
 ```
 
-## Output: What the Notion Page Looks Like
+## Output: One Entry Per Item in "Estante"
 
-The digest appends to my daily journal page — the same page I use for reflections and notes. Information intake and personal reflection live in the same space.
+The digest no longer writes a combined page. Each of the 15 selected items becomes its **own row** in my **Estante** (Bookshelf) database — the place where everything I consume lives. A "Date = Today" view on my Bookshelf page surfaces the day's reading automatically, and the email + WhatsApp channels deliver the same list outside Notion.
 
-Each day's digest includes:
-- **Platform mix** — how many items came from each source type
-- **Domain-grouped sections** — items organized by topic with emoji prefixes
-- **Priority markers** — high-scoring items (80+) flagged for attention
-- **Per-item format** — title, source, score, AI summary, direct link
+Each Estante entry is mapped to the database schema:
+- **Title** — the headline / key takeaway
+- **Type** — Reading · Video · Article (derived from the source platform)
+- **Format** — X thread · Youtube video · Podcast · Article · LinkedIn post …
+- **Domain** — Product · AI · Tech · Startups · Career … (multi-select)
+- **Date** — today (drives the "Date = Today" reading surface)
+- **Link** — direct URL to the content
+- **Author / Speaker** — linked to my Network CRM *only* when the author already exists there; publications and company posts are left unlinked
+- **Page body** — Summary, Source, and "why this made the cut"
+
+**Key insight** and **Rank** are deliberately left empty — they're reserved for when I manually promote an entry into my Aprendizajes (Learnings) view, so auto-logged reading never pollutes my curated learnings.
 
 ## Usage
 
@@ -144,11 +152,13 @@ Scheduled daily at 8:00 AM via Windows Task Scheduler with `StartWhenAvailable=t
 
 **Why domain rotation?** Prevents filter bubble effects. If I only boosted AI every day, I'd never see the Fintech or Sports-Tech content that often sparks the most unexpected connections.
 
-**Why Notion journal?** The digest isn't a standalone feed — it's part of my daily reflection page. Reading what's happening in the world and writing about what I'm doing happen in the same context.
+**Why a database instead of a journal page?** Mixing consumption with reflection muddied both. Estante keeps *what I read* structured, filterable, and queryable; the Journaling database stays clean for *what I think*. One row per item means each carries proper Type/Format/Domain tags I can slice later — and promoting a great read into a permanent learning is one manual step.
+
+**Why email + WhatsApp on top of Notion?** Notion is the system of record, but I don't always open it first thing. The email gives a skimmable archive and the WhatsApp nudge (via my "me bot") meets me where I already am in the morning.
 
 ## Stack
 
-Python 3.11+ · Claude API (summaries) · Notion API (publishing) · Twitter API v2 · YouTube Data API · Gmail OAuth · feedparser · Hacker News Firebase API
+Python 3.11+ · Claude API (summaries) · Notion API (Estante DB + Network relation) · Twitter API v2 · YouTube Data API · Gmail OAuth (fetch + send) · WhatsApp · feedparser · Hacker News Firebase API
 
 ---
 

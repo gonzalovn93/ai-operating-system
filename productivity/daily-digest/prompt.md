@@ -1,13 +1,13 @@
 # DailyDigest — Workflow Prompt
 
 ## Purpose
-Aggregate 85+ content sources daily, score and cluster by relevance, generate AI summaries, and publish a curated digest to a Notion journal page.
+Aggregate 85+ content sources daily, score and cluster by relevance, generate AI summaries, and log a curated 15-item reading list into the Notion "Estante" (Bookshelf) database — one entry per item — with an email and a WhatsApp nudge as secondary channels.
 
 ## Architecture
 
 ### Pipeline
 ```
-Fetch (5 fetchers) → Score (0-100) → Diversity Caps → Domain Rotation → AI Summaries → Notion Publish
+Fetch (5 fetchers) → Score (0-100) → Diversity Caps → Domain Rotation → AI Summaries → Estante DB + Email + WhatsApp
 ```
 
 ### 5 Content Fetchers
@@ -92,21 +92,37 @@ For each of the 15 final items, generate a 2-3 sentence summary using Claude:
 - Why it matters to a PM / builder
 - One actionable takeaway or question
 
-## Notion Publishing
+## Notion Publishing — Estante (Bookshelf) database
 
 ### Output Format
-Appends to today's journal page with:
-- Platform mix stats (Twitter: X, RSS: X, HN: X, Gmail: X)
-- Domain-grouped items with emoji prefixes
-- High-priority items (score >= 80) marked with fire emoji
-- Each item: title, source, score, AI summary, link
+Creates **one Estante entry per selected item** (top ~15). No combined page. Each entry maps to the Estante schema:
 
-### Journal Integration
-- Finds today's journal page by Entry Date property
-- Creates page if it doesn't exist
-- Appends digest as blocks (headings, paragraphs, dividers)
-- Rich text truncated to 2000 chars (Notion API limit)
-- Maximum 100 blocks per API call
+| Property | Type | Value |
+|----------|------|-------|
+| Title | title | Headline / key takeaway |
+| Type | select | Reading · Video · Article (from source platform) |
+| Format | select | X thread · Youtube video · Podcast · Article · LinkedIn post … |
+| Domain | multi-select | Product · AI · Tech · Startups · Career … |
+| Date | date | Today (drives the "Date = Today" reading view) |
+| Link | url | Direct content URL |
+| Author / Speaker | relation → Network | Linked ONLY if the author already exists in Network; publications / company posts skipped |
+| Key insight | text | **Left empty** (reserved for manual promotion to Aprendizajes) |
+| Rank | select | **Left empty** (reserved for manual promotion) |
+
+Page body carries Summary / Source / "why this made the cut".
+
+### Mapping rules
+- **Type/Format** keyed off the source platform: twitter → Reading / X thread; youtube → Video / Youtube video; podcast → Video / Podcast; blog · newsletter · rss · HN → Article / Article.
+- **Domain** maps the digest taxonomy → Estante options (e.g. `AI & Tech` → [AI, Tech], `PM & Growth` → [Product], `Startups & Venture` → [Startups, Entrepreneurship]).
+- **Author** is best-effort: exact name lookup in the Network DB; never creates a Network row (no CRM pollution).
+
+### Idempotency
+- Queries Estante for entries already dated today and skips any item whose Link already exists.
+- Combined with the cross-day `published_urls.json` tracker, running twice never double-logs.
+- Rich text truncated to 2000 chars; max 100 blocks per API call.
+
+### Secondary channels (unchanged)
+After Estante is populated, the same digest is emailed (Gmail) and pushed to WhatsApp; both link back to the Estante "Date = Today" view.
 
 ## Configuration
 
@@ -153,7 +169,9 @@ DailyDigest/
 │   ├── topic_clusterer.py
 │   └── ai_summarizer.py
 └── publishers/
-    └── notion_publisher.py
+    ├── notion_publisher.py             # One Estante entry per item
+    ├── gmail_sender.py                 # Email digest
+    └── whatsapp_sender.py              # WhatsApp nudge
 ```
 
 ## Success Criteria
@@ -162,5 +180,5 @@ DailyDigest/
 - Scores 80+ items, filters to 15 high-quality items
 - No single author or platform dominates
 - AI summaries are concise and actionable
-- Published to Notion journal within 3 minutes
+- 15 entries created in the Estante DB (no duplicates) + email + WhatsApp sent, within 3 minutes
 - Runs reliably on schedule (8am daily)
