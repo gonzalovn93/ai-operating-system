@@ -115,7 +115,9 @@ Page body carries Summary / Source / "why this made the cut".
 
 ### Mapping rules
 - **Type/Format** keyed off the source platform: twitter → Reading / X thread; youtube → Video / Youtube video; podcast → Video / Podcast; blog · newsletter · rss · HN → Article / Article.
-- **Domain** maps the digest taxonomy → Estante options (e.g. `AI & Tech` → [AI, Tech], `PM & Growth` → [Product], `Startups & Venture` → [Startups, Entrepreneurship]).
+- **Domain** is **classified by the AI from each item's content** (the same batched Max-plan call that writes summaries returns 1–2 domains from the Estante vocabulary). A static digest→Estante map (`processors/domains.py`) is the fallback if the model output is unparseable. This fixes broad-newsletter mis-tagging (e.g. Morning Brew, hard-coded "Startups & Venture", carrying an AI/Tech story).
+- **One taxonomy everywhere:** the Notion DB, email, and PDF all group by the same canonical Estante domain, so an item can't appear as "Startups" in the email and "Tech" in the database.
+- **Company titles:** first-party company sources (OpenAI, NVIDIA, Anthropic, Google, Microsoft, Meta, xAI, Notion, Y Combinator) get a `Company - Title` prefix in the Notion title.
 - **Author** is best-effort: exact name lookup in the Network DB; never creates a Network row (no CRM pollution).
 
 ### Idempotency

@@ -123,14 +123,17 @@ DailyDigest/
 The digest no longer writes a combined page. Each of the 15 selected items becomes its **own row** in my **Estante** (Bookshelf) database — the place where everything I consume lives. A "Date = Today" view on my Bookshelf page surfaces the day's reading automatically, and the email + WhatsApp channels deliver the same list outside Notion.
 
 Each Estante entry is mapped to the database schema:
-- **Title** — the headline / key takeaway
+- **Title** — the headline / key takeaway. First-party company content (OpenAI, NVIDIA, Anthropic, Google …) is prefixed `Company - Title` so it's obvious at a glance who's presenting
 - **Type** — Reading · Video · Article (derived from the source platform)
 - **Format** — X thread · Youtube video · Podcast · Article · LinkedIn post …
-- **Domain** — Product · AI · Tech · Startups · Career … (multi-select)
+- **Domain** — Product · AI · Tech · Startups · Career … (multi-select), **classified by the AI from the item's content**, not inherited from the source — so a broad newsletter (e.g. Morning Brew = "Startups") no longer mis-tags an AI/Tech story
 - **Date** — today (drives the "Date = Today" reading surface)
 - **Link** — direct URL to the content
 - **Author / Speaker** — linked to my Network CRM *only* when the author already exists there; publications and company posts are left unlinked
 - **Page body** — Summary, Source, and "why this made the cut"
+
+### One taxonomy everywhere
+The Estante Domain options are the single source of truth. The Notion DB, the email, and the PDF all group by the **same** AI-classified domain (`processors/domains.py`), so an item never shows up as "Startups" in the email and "Tech" in the database.
 
 **Key insight** and **Rank** are deliberately left empty — they're reserved for when I manually promote an entry into my Aprendizajes (Learnings) view, so auto-logged reading never pollutes my curated learnings.
 
