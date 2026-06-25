@@ -10,6 +10,7 @@ End-to-end AI content pipeline — from ideation to published carousel to perfor
 | [**WeeklyIdeation**](./weekly-ideation/) | Weekly | Content ideas from 80+ sources aligned with voice strategy | ✅ Active |
 | [**ContentRetro**](./content-retro/) | Weekly | Post performance analysis, pattern insights, improvement recs | ✅ Active |
 | [**ContentEditor**](./content-editor/) | `"Review my video script"` | Script/edit review, 12-point quality gate, clip inventory | ✅ Active |
+| [**VideoThumbnailGenerator**](./video-thumbnail-generator/) | `"Generate a thumbnail for my video"` | Branded 1920×1080 LinkedIn video thumbnail (face + screen + hook) | ✅ Active |
 
 ## Example
 
@@ -27,7 +28,9 @@ End-to-end AI content pipeline — from ideation to published carousel to perfor
 
 ## How it works
 
-ContentPackageGenerator fetches the content idea from the Notion backlog, applies a voice guide (tone, structure, vocabulary rules), generates the post via Claude, creates carousel slides, generates images via Gemini, and composites them. Everything writes back to the same Notion page. WeeklyIdeation scans 80+ sources for theme-aligned ideas. ContentRetro analyzes LinkedIn metrics to surface what's working.
+ContentPackageGenerator fetches the content idea from the Notion backlog, applies a voice guide (tone, structure, vocabulary rules), generates the post via Claude, creates carousel slides, generates images via Gemini, and composites them. Everything writes back to the same Notion page. WeeklyIdeation scans 80+ sources for theme-aligned ideas. ContentRetro analyzes LinkedIn metrics to surface what's working. VideoThumbnailGenerator turns a raw video into a branded, publish-ready thumbnail from a couple of timestamps — face frame, screen frame, and a one-line hook composited into a consistent layout.
+
+This is the same system at work for content *generation*, not just planning: ideas in, finished posts, carousels, scripts, and thumbnails out — all in one voice.
 
 ## Stack
 

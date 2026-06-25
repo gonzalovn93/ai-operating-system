@@ -12,12 +12,12 @@ An operating system layer that turns natural language into structured workflows 
 │ Learning │ Content  │ Career   │    PM    │     Agents      │
 │Productiv.│  Voice   │   OS     │ Toolkit  │  (High-Context) │
 ├──────────┼──────────┼──────────┼──────────┼─────────────────┤
-│ 8 flows  │ 4 modules│ 4 flows  │38 flows  │  6 copilots     │
+│ 8 flows  │ 5 modules│ 4 flows  │38 flows  │  6 copilots     │
 │ Digest   │ Ideation │ Hunt     │ PRDs     │  Career         │
 │ Learning │ Posts    │ Scout    │ OKRs     │  Recruiting     │
 │ Reviews  │ Retro   │ Blitz    │ Analysis │  Branding       │
 │ Granola  │ Editor   │ Nurture  │ Cases    │  Positioning    │
-│ Tasks    │          │          │          │  PM Copilot     │
+│ Tasks    │ Thumbs   │          │          │  PM Copilot     │
 │ Habits   │          │          │          │  Intel Agent    │
 ├──────────┴──────────┴──────────┴──────────┴─────────────────┤
 │                     Notion Databases (9)                     │
@@ -29,7 +29,7 @@ An operating system layer that turns natural language into structured workflows 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**52+ workflows · 9 Notion databases · 5 domains · 6 agents · 3 daily-use automations**
+**53+ workflows · 9 Notion databases · 5 domains · 6 agents · 3 daily-use automations**
 
 ---
 
@@ -56,7 +56,7 @@ Five domains, each with its own workflows, databases, and instruction files. A c
 | Domain | What it covers | Key workflows | Count |
 |--------|---------------|---------------|-------|
 | [**Career**](./career) | Job scanning, networking, nurture, applications, pipeline strategy | JobHunter, NetworkingScout, ApplicationBlitz, RelationshipNurture | 4 |
-| [**Content**](./content) | Voice-driven posts, carousels, ideation, retro, video editing | ContentPackageGenerator, WeeklyIdeation, ContentEditor | 4 |
+| [**Content**](./content) | Voice-driven posts, carousels, ideation, retro, video editing, thumbnails | ContentPackageGenerator, WeeklyIdeation, ContentEditor, VideoThumbnailGenerator | 5 |
 | [**Product**](./product) | PRDs, OKRs, case studies, competitive analysis, board decks | 38 PM workflows via PMToolkit | 38 |
 | [**Productivity**](./productivity) | Daily digests, learning capture, meeting-note sync, time tracking | DailyDigest, GranolaSync, TimeTracking, WeeklyReview | 8 |
 | [**Agents**](./agents) | High-context copilots with persistent memory and judgment | Career Strategy, PM Copilot, Intel Agent | 6 |
@@ -84,7 +84,7 @@ The three automations I run consistently:
 
 - **Every week:** `"Find PM jobs"` — JobHunter scrapes 18 target companies across 6 ATS platforms, deduplicates against existing entries, scores for fit, and populates my Applications database in Notion.
 
-- **On demand:** `"Create the post for [title]"` — ContentPackageGenerator takes a content idea from my Notion backlog and produces a LinkedIn post, 7-slide editorial carousel with composited images, and a 45-second video script — all in my voice, for ~$0.87 per package.
+- **On demand:** `"Create the post for [title]"` — ContentPackageGenerator takes a content idea from my Notion backlog and produces a LinkedIn post, 7-slide editorial carousel with composited images, and a 45-second video script — all in my voice, for ~$0.87 per package. I don't just plan content with this system — I *generate* it: posts, carousels, scripts, and now video thumbnails come out finished and on-brand.
 
 The rest activates when needed:
 
@@ -93,6 +93,7 @@ The rest activates when needed:
 - `"Generate materials for [job]"` — ApplicationBlitz creates a tailored resume + cover letter.
 - `"Write a PRD for X"` — PMToolkit generates any of 38 PM documents and saves to Google Drive.
 - `"Do my weekly review"` — WeeklyReview pulls OKR progress from Notion, checks calendar hours against targets, identifies blockers, and publishes the analysis.
+- `"Generate a thumbnail for my video"` — VideoThumbnailGenerator turns a raw recording into a branded 1920×1080 LinkedIn thumbnail from a couple of timestamps — face frame + screen frame + a one-line hook, composited into a consistent layout.
 
 I don't open 5 different tools. I open Claude Code and speak in commands.
 
@@ -120,6 +121,7 @@ I don't open 5 different tools. I open Claude Code and speak in commands.
 |-----------|-----------|
 | AI Engine | Claude API (Anthropic) |
 | Image Generation | Gemini |
+| Thumbnails / Image Compositing | Pillow (PIL) + ffmpeg + Inter |
 | Runtime | Claude Code + Python 3.11+ |
 | Database | Notion API (raw httpx — the SDK is incomplete) |
 | Document Output | Google Drive (OAuth), reportlab (PDF) |
