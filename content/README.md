@@ -11,6 +11,7 @@ End-to-end AI content pipeline — from ideation to published carousel to perfor
 | [**ContentRetro**](./content-retro/) | Weekly | Post performance analysis, pattern insights, improvement recs | ✅ Active |
 | [**ContentEditor**](./content-editor/) | `"Review my video script"` | Script/edit review, 12-point quality gate, clip inventory | ✅ Active |
 | [**VideoThumbnailGenerator**](./video-thumbnail-generator/) | `"Generate a thumbnail for my video"` | Branded 1920×1080 LinkedIn video thumbnail (face + screen + hook) | ✅ Active |
+| [**Byte**](./byte/) | `"Byte sobre [news/idea]"` | Recordable 20–40s Spanish short-form video script (IG/TikTok) from a news item or idea | ✅ Active |
 
 ## Example
 

@@ -56,7 +56,7 @@ Five domains, each with its own workflows, databases, and instruction files. A c
 | Domain | What it covers | Key workflows | Count |
 |--------|---------------|---------------|-------|
 | [**Career**](./career) | Job scanning, networking, nurture, applications, pipeline strategy | JobHunter, NetworkingScout, ApplicationBlitz, RelationshipNurture | 4 |
-| [**Content**](./content) | Voice-driven posts, carousels, ideation, retro, video editing, thumbnails | ContentPackageGenerator, WeeklyIdeation, ContentEditor, VideoThumbnailGenerator | 5 |
+| [**Content**](./content) | Voice-driven posts, carousels, ideation, retro, video editing, thumbnails, short-form scripts | ContentPackageGenerator, WeeklyIdeation, ContentEditor, VideoThumbnailGenerator, Byte | 6 |
 | [**Product**](./product) | PRDs, OKRs, case studies, competitive analysis, board decks | 38 PM workflows via PMToolkit | 38 |
 | [**Productivity**](./productivity) | Daily digests, learning capture, meeting-note sync, time tracking | DailyDigest, GranolaSync, TimeTracking, WeeklyReview | 8 |
 | [**Agents**](./agents) | High-context copilots with persistent memory and judgment | Career Strategy, PM Copilot, Intel Agent | 6 |
