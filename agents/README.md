@@ -17,7 +17,6 @@ The key distinction: these agents *challenge* weak thinking. They're designed as
 | [Personal Branding](./personal-branding/) | Public presence | Website, LinkedIn, content strategy as a coordinated system | Claude Project |
 | [Positioning Strategist](./positioning-strategist/) | Narrative | Company-specific interview prep, story tailoring, narrative frameworks | Claude Project |
 | [PM Copilot](./pm-copilot/) | Product work | PRD review, strategy critique, tradeoff analysis + 38 workflow templates | Claude Project |
-| [Perplexity Intel Agent](./perplexity-intel-agent/) | Competitive intel | Weekly monitoring of Google AI, OpenAI, Microsoft Copilot, Anthropic | Python (production) |
 
 ## Example
 
@@ -38,7 +37,6 @@ The agent knows your career history, risk tolerance, and long-term goals from pr
 ## How it works
 
 - **Claude Projects** (5 agents): Persistent instruction files define identity, knowledge base, and constraints. Memory carries across sessions. Each agent has a `prompt.md` with the full system prompt.
-- **Python agent** (Perplexity Intel Agent): Production script using Claude Sonnet + Tavily Search in a tool-use loop. Runs weekly via scheduler, outputs competitive intelligence reports.
 
 ## Files
 

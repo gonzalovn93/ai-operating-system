@@ -72,7 +72,6 @@ These aren't generic prompts — they're Claude Projects with persistent identit
 | [Personal Branding](./agents/personal-branding/) | Website, LinkedIn, and content as a coordinated system |
 | [Positioning Strategist](./agents/positioning-strategist/) | Interview narratives, company-specific story tailoring |
 | [PM Copilot](./agents/pm-copilot/) | Product thinking partner — PRD review, tradeoff analysis, strategy critique |
-| [Perplexity Intel Agent](./agents/perplexity-intel-agent/) | Weekly competitive intelligence — Google AI, OpenAI, Microsoft, Anthropic |
 
 ---
 

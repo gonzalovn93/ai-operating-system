@@ -1,3 +1,0 @@
-anthropic
-tavily-python
-python-dotenv
