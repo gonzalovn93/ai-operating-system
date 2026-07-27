@@ -20,6 +20,9 @@ An operating system layer that turns natural language into structured workflows 
 │ Tasks    │ Thumbs   │          │          │  PM Copilot     │
 │ Habits   │          │          │          │  Intel Agent    │
 ├──────────┴──────────┴──────────┴──────────┴─────────────────┤
+│               Model Selection Layer (ModelStack)             │
+│      Best model per task · drift scanner · monthly refresh   │
+├─────────────────────────────────────────────────────────────┤
 │                     Notion Databases (9)                     │
 │    Tasks · Learnings · Journal · Content · Applications     │
 │           Companies · Network · Key Results · Habits        │
@@ -29,7 +32,7 @@ An operating system layer that turns natural language into structured workflows 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**53+ workflows · 9 Notion databases · 5 domains · 6 agents · 3 daily-use automations**
+**53+ workflows · 9 Notion databases · 6 domains · 6 agents · 3 daily-use automations**
 
 ---
 
@@ -60,6 +63,7 @@ Five domains, each with its own workflows, databases, and instruction files. A c
 | [**Product**](./product) | PRDs, OKRs, case studies, competitive analysis, board decks | 38 PM workflows via PMToolkit | 38 |
 | [**Productivity**](./productivity) | Daily digests, learning capture, meeting-note sync, time tracking | DailyDigest, GranolaSync, TimeTracking, WeeklyReview | 8 |
 | [**Agents**](./agents) | High-context copilots with persistent memory and judgment | Career Strategy, PM Copilot, Intel Agent | 6 |
+| [**Models**](./models) | Which model runs which job — picked deliberately, audited monthly | Pick, Audit, Refresh, Decide · [open source](https://github.com/gonzalovn93/model-stack) | 4 |
 
 ### Agents
 
